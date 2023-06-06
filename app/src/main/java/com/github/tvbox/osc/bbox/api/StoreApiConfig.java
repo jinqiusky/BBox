@@ -3,6 +3,7 @@ package com.github.tvbox.osc.bbox.api;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.github.tvbox.osc.bbox.ui.dialog.StoreApiDialog;
 import com.github.tvbox.osc.bbox.util.HawkConfig;
 import com.github.tvbox.osc.bbox.util.LOG;
 import com.google.gson.Gson;
@@ -107,6 +108,9 @@ public class StoreApiConfig {
 
         ArrayList<String> history = new ArrayList<>();
         HashMap<String, String> map = new HashMap<>();
+
+        history.add(Hawk.get(HawkConfig.API_NAME));
+        map.put(Hawk.get(HawkConfig.API_NAME), Hawk.get(HawkConfig.API_URL));
 
         JsonObject urlsObject = new Gson().fromJson(urlsJson, JsonObject.class);
 
