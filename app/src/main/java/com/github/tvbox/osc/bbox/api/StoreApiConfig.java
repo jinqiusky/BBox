@@ -66,7 +66,7 @@ public class StoreApiConfig {
         if (storeMap.isEmpty()) {
             Toast.makeText(context, "仓库为空，使用默认仓库", Toast.LENGTH_SHORT).show();
             String name = "爬的别人的仓库";
-            String sotreApi = "https://cdn.jsdelivr.net/gh/mlabalabala/TVResource@main/boxCfg/ori_source.json";
+            String sotreApi = "https://raw.githubusercontent.com/mlabalabala/TVResource/main/boxCfg/ori_source.json";
             storeMap.put(name, sotreApi);
             storeNameHistory.add(name);
             Hawk.put(HawkConfig.STORE_API_NAME_HISTORY, storeNameHistory);
@@ -154,8 +154,13 @@ public class StoreApiConfig {
         ArrayList<String> history = new ArrayList<>();
         HashMap<String, String> map = new HashMap<>();
 
-        history.add(Hawk.get(HawkConfig.API_NAME));
-        map.put(Hawk.get(HawkConfig.API_NAME), Hawk.get(HawkConfig.API_URL));
+        String apiName = Hawk.get(HawkConfig.API_NAME, "");
+        String apiUrl = Hawk.get(HawkConfig.API_URL, "");
+
+        if (!apiName.isEmpty()){
+            history.add(apiName);
+            map.put(apiName, apiUrl);
+        }
 
         JsonObject urlsObject = new Gson().fromJson(urlsJson, JsonObject.class);
 

@@ -55,7 +55,7 @@ public class App extends MultiDexApplication {
         Hawk.init(this).build();
 
         String defaultApiName = "默认-自备份线路";
-        String defaultApi = "https://cdn.jsdelivr.net/gh/mlabalabala/TVResource@main/boxCfg/default";
+        String defaultApi = "https://raw.githubusercontent.com/mlabalabala/TVResource/main/boxCfg/default";
 
         HashMap<String, String> defaultApiMap = Hawk.get(HawkConfig.API_MAP, new HashMap<>());
         defaultApiMap.put(defaultApiName, defaultApi);
@@ -65,10 +65,11 @@ public class App extends MultiDexApplication {
 
         Hawk.put(HawkConfig.DEBUG_OPEN, false);
 
-        putDefault(HawkConfig.API_URL, defaultApi);
-        putDefault(HawkConfig.API_NAME, defaultApiName);
-        putDefault(HawkConfig.API_NAME_HISTORY, defaultApiHistory);
-        putDefault(HawkConfig.API_MAP, defaultApiMap);
+        // 不添加默认线路
+        // putDefault(HawkConfig.API_URL, defaultApi);
+        // putDefault(HawkConfig.API_NAME, defaultApiName);
+        // putDefault(HawkConfig.API_NAME_HISTORY, defaultApiHistory);
+        // putDefault(HawkConfig.API_MAP, defaultApiMap);
 
         putDefault(HawkConfig.PLAY_TYPE, 1);
         putDefault(HawkConfig.HOME_REC, 1);
